@@ -6,11 +6,14 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { PlaceService } from './place.service';
 
-@Controller('api/v1/Place')
+@Controller('api/v1/place')
+@UseGuards(JwtAuthGuard)
 export class PlaceController {
   constructor(private readonly placeService: PlaceService) {}
 

@@ -6,11 +6,14 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { DisciplineService } from './discipline.service';
 
-@Controller('api/v1/Discipline')
+@Controller('api/v1/discipline')
+@UseGuards(JwtAuthGuard)
 export class DisciplineController {
   constructor(private readonly disciplineService: DisciplineService) {}
 

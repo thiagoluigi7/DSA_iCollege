@@ -12,9 +12,11 @@ import { DisciplineModule } from '../discipline/discipline.module';
 import { CourseModule } from '../course/course.module';
 import { CityModule } from '../city/city.module';
 import { BusScheduleModule } from '../bus-schedule/bus-schedule.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
+    AuthModule,
     UserModule, 
     PostModule, 
     UniversityModule, 
