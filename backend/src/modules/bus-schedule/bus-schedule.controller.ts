@@ -6,11 +6,14 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { BusScheduleService } from './bus-schedule.service';
 
-@Controller('api/v1/BusSchedule')
+@Controller('api/v1/bus-schedule')
+@UseGuards(JwtAuthGuard)
 export class BusScheduleController {
   constructor(private readonly busScheduleService: BusScheduleService) {}
 

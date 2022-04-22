@@ -6,11 +6,14 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { SchollarshipService } from './schollarship.service';
 
 @Controller('api/v1/schollarship')
+@UseGuards(JwtAuthGuard)
 export class SchollarshipController {
   constructor(private readonly schollarshipService: SchollarshipService) {}
 

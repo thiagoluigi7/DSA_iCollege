@@ -6,11 +6,14 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { UniversityService } from './university.service';
 
 @Controller('api/v1/university')
+@UseGuards(JwtAuthGuard)
 export class UniversityController {
   constructor(private readonly universityService: UniversityService) {}
 
