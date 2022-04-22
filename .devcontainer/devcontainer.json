@@ -61,12 +61,16 @@
 		"Gruntfuggly.todo-tree",
 		"meganrogge.template-string-converter",
 		"richie5um2.vscode-sort-json",
-		"VisualStudioExptTeam.vscodeintellicode"
+		"VisualStudioExptTeam.vscodeintellicode",
+		"esbenp.prettier-vscode",
+		"2gua.rainbow-brackets",
+		"shardulm94.trailing-spaces"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		3000,
-		3333
+		3333,
+		8080
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "cd backend; npm install; cd ..; cd frontend; npm install;",

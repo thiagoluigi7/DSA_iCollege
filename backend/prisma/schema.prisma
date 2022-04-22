@@ -11,10 +11,12 @@ datasource db {
 }
 
 model User {
-  id    String  @id @default(uuid())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id           String         @id @default(uuid())
+  email        String         @unique
+  password     String
+  name         String?
+  posts        Post[]
+  Schollarship Schollarship[]
 }
 
 model Post {
@@ -25,4 +27,74 @@ model Post {
   published Boolean? @default(false)
   author    User?    @relation(fields: [authorId], references: [id])
   authorId  String?
+  House     House?   @relation(fields: [houseId], references: [id])
+  houseId   String?
+  Place     Place?   @relation(fields: [placeId], references: [id])
+  placeId   String?
+}
+
+model University {
+  id       String  @id @default(uuid())
+  name     String
+  initials String
+  cityId   String?
+  city     City?   @relation(fields: [cityId], references: [id])
+}
+
+model Course {
+  id           String         @id @default(uuid())
+  name         String
+  Schollarship Schollarship[]
+}
+
+model City {
+  id         String       @id @default(uuid())
+  name       String
+  state      String
+  University University[]
+}
+
+model Schollarship {
+  id          String       @id @default(uuid())
+  userId      String
+  user        User         @relation(fields: [userId], references: [id])
+  courseId    String
+  course      Course       @relation(fields: [courseId], references: [id])
+  disciplines Discipline[]
+}
+
+model Discipline {
+  id             String        @id @default(uuid())
+  name           String
+  events         Event[]
+  Schollarship   Schollarship? @relation(fields: [schollarshipId], references: [id])
+  schollarshipId String?
+}
+
+model Event {
+  id           String      @id @default(uuid())
+  name         String
+  date         DateTime
+  Discipline   Discipline? @relation(fields: [disciplineId], references: [id])
+  disciplineId String?
+}
+
+model House {
+  id      String  @id @default(uuid())
+  name    String?
+  address String
+  posts   Post[]
+}
+
+model Place {
+  id      String @id @default(uuid())
+  name    String
+  address String
+  posts   Post[]
+}
+
+model BusSchedule {
+  id   String @id @default(uuid())
+  name String
+  time String
 }
