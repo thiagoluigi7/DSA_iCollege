@@ -11,7 +11,7 @@
             pill
             variant="outline-light"
             class="btn-login"
-            href="#/login"
+            @click="logout"
           >
             Sign Out
           </b-button>
@@ -22,9 +22,17 @@
 </template>
 
 <script>
+import ls from "../localStore.js";
+
 export default {
   data() {
     return {};
+  },
+  methods: {
+    logout() {
+      ls.clear();
+      this.$router.push("/");
+    },
   },
 };
 </script>
