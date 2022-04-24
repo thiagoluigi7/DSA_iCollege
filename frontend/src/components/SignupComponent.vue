@@ -103,7 +103,7 @@ export default {
       console.log("res", response);
       if (response.status === 201) {
         ls.set("access_token", response.data.access_token);
-        this.$router.push("/");
+        this.$router.push("/logado");
       }
     },
   },
