@@ -5,6 +5,7 @@ import { PrismaService } from './modules/app/prisma.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('iCollege')
     .setDescription('API used on the iCollege project')
