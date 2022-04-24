@@ -13,7 +13,6 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { UserService } from './user.service';
 
 @Controller('api/v1/users')
-@UseGuards(JwtAuthGuard)
 export class UserController {
   constructor(private readonly usersService: UserService) {}
 
@@ -24,12 +23,14 @@ export class UserController {
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   //Todo: Make type interface for params
   async findAll(@Body() params) {
     return this.usersService.findAll(params);
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   async findOne(@Param('id') id: string) {
     const params: Prisma.UserWhereUniqueInput = {
       id: id,
@@ -38,6 +39,7 @@ export class UserController {
   }
 
   @Patch(':id')
+  @UseGuards(JwtAuthGuard)
   //Todo: Make type interface for params
   async update(
     @Param('id') id: string,
@@ -53,6 +55,7 @@ export class UserController {
   }
 
   @Delete(':id')
+  @UseGuards(JwtAuthGuard)
   async remove(@Param('id') id: string) {
     const params: Prisma.UserWhereUniqueInput = {
       id: id,
