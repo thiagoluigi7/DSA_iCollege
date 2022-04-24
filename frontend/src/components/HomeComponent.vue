@@ -1,12 +1,23 @@
 <template>
   <b-div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <b-button size="lg" pill variant="success">Essa é a home</b-button>
-        </b-col>
-      </b-row>
-    </b-container>
+    <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar-brand href="#" class="nav-text">Help Calouro</b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-button
+            pill
+            variant="outline-light"
+            class="btn-login"
+            href="#/login"
+          >
+            Sign In
+          </b-button>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
   </b-div>
 </template>
 
@@ -19,4 +30,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute t o limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.nav-text {
+  margin-left: 45rem;
+  font-weight: bold;
+}
+
+.btn-login {
+  margin-left: 35rem;
+}
+</style>
