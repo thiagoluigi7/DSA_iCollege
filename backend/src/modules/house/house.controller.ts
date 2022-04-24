@@ -1,12 +1,12 @@
 import {
-    Controller,
-    Get,
-    Post,
-    Body,
-    Patch,
-    Param,
-    Delete,
-    UseGuards,
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -20,43 +20,43 @@ export class HouseController {
   @Post()
   //Todo: Modify Prisma.HouseCreateInput so it doesn't allow an House to set its own id
   async create(@Body() createHouseDto: Prisma.HouseCreateInput) {
-      return this.houseService.create(createHouseDto);
+    return this.houseService.create(createHouseDto);
   }
 
   @Get()
   //Todo: Make type interface for params
   async findAll(@Body() params) {
-      return this.houseService.findAll(params);
+    return this.houseService.findAll(params);
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-      const params: Prisma.HouseWhereUniqueInput = {
+    const params: Prisma.HouseWhereUniqueInput = {
       id: id,
-      };
-      return this.houseService.findOne(params);
+    };
+    return this.houseService.findOne(params);
   }
 
   @Patch(':id')
   //Todo: Make type interface for params
   async update(
-      @Param('id') id: string,
-      @Body() updateHouseDto: Prisma.HouseUpdateInput,
+    @Param('id') id: string,
+    @Body() updateHouseDto: Prisma.HouseUpdateInput,
   ) {
-      const params = {
+    const params = {
       where: {
-          id: id,
+        id: id,
       } as Prisma.HouseWhereUniqueInput,
       data: updateHouseDto,
-      };
-      return this.houseService.update(params);
+    };
+    return this.houseService.update(params);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-      const params: Prisma.HouseWhereUniqueInput = {
+    const params: Prisma.HouseWhereUniqueInput = {
       id: id,
-      };
-      return this.houseService.remove(params);
+    };
+    return this.houseService.remove(params);
   }
 }

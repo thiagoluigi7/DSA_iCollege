@@ -10,7 +10,7 @@ async function bootstrap() {
     .setDescription('API used on the iCollege project')
     .setVersion('1.0')
     .addTag('iCollege')
-    .build()
+    .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   const prismaService = app.get(PrismaService);
